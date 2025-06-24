@@ -1,0 +1,177 @@
+/* Importa una fuente de Google Fonts más elegante y moderna */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Define variables CSS para colores, facilitando cambios futuros */
+    --primary-color: #4A90E2; /* Un azul vibrante */
+    --secondary-color: #50E3C2; /* Un turquesa refrescante */
+    --text-dark: #2c3e50;
+    --text-light: #f5f5f5;
+    --card-bg: rgba(255, 255, 255, 0.98);
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Aplica la nueva fuente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradiente diagonal más vivo */
+    color: var(--text-dark);
+    overflow: hidden; /* Asegura que no haya scroll no deseado */
+    animation: backgroundPulse 15s infinite alternate; /* Animación de pulso al fondo */
+}
+
+/* Animación para el fondo */
+@keyframes backgroundPulse {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 30px; /* Más padding para un look espacioso */
+    border-radius: 22px; /* Bordes aún más redondeados */
+    box-shadow: 0 20px 40px var(--shadow-medium); /* Sombra más grande y profunda */
+    text-align: center;
+    width: 30%;
+    max-width: 600px; /* Más espacio para los elementos */
+    opacity: 0; /* Inicialmente invisible para la animación */
+    transform: translateY(30px);
+    animation: slideInUp 1s ease-out forwards; /* Animación de subida al cargar */
+    position: relative; /* Para posibles efectos de partículas o brillos */
+    overflow: hidden; /* Esconde cualquier desbordamiento de sombras internas */
+}
+
+/* Animación de entrada para el contenedor */
+@keyframes slideInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--text-dark);
+    margin-bottom: 35px;
+    font-size: 3em; /* Título más grande */
+    font-weight: 700; /* Más negrita */
+    position: relative;
+    padding-bottom: 15px;
+    letter-spacing: -1px; /* Letras un poco más juntas */
+}
+
+h1::after { /* Línea decorativa con gradiente */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+    animation: lineGrow 1.5s ease-out forwards; /* Animación de crecimiento */
+}
+
+/* Animación para la línea del título */
+@keyframes lineGrow {
+    from { width: 0; }
+    to { width: 80px; }
+}
+
+.data-grid {
+    display: grid; /* Usamos Grid para un diseño responsivo de las cajas */
+    grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+    gap: 25px; /* Espacio entre las cajas */
+    margin-bottom: 30px;
+}
+
+.data-box {
+    background: linear-gradient(145deg, #ffffff, #f0f4f8); /* Gradiente más dinámico */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-light); /* Sombra más sutil y elegante */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave */
+    border: none; /* Quitamos el borde para un look más limpio */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-box:hover {
+    transform: translateY(-8px) scale(1.02); /* Efecto "levantar" más pronunciado y ligeramente agrandado */
+    box-shadow: 0 15px 35px var(--shadow-medium); /* Sombra más intensa al pasar el mouse */
+}
+
+.data-box p {
+    margin: 0 0 10px 0;
+    font-size: 1.2em; /* Texto descriptivo más grande */
+    color: #6a7c8e;
+    font-weight: 400;
+}
+
+.data-box h2 {
+    margin: 0;
+    font-size: 3.8em; /* ¡Valores aún más grandes y prominentes! */
+    color: var(--primary-color); /* Color primario para los valores */
+    font-weight: 700; /* Muy negrita */
+    letter-spacing: -2px; /* Espaciado negativo para un look compacto y moderno */
+    transition: color 0.3s ease-in-out;
+}
+
+.data-box:hover h2 {
+    color: var(--secondary-color); /* Cambia de color al pasar el mouse */
+}
+
+
+.status {
+    margin-top: 20px;
+    font-size: 1em; /* Texto de estado más grande */
+    color: #888;
+    font-weight: 500;
+    animation: pulseStatus 2s infinite ease-in-out; /* Animación de pulso para el estado */
+}
+
+/* Animación para el texto de estado */
+@keyframes pulseStatus {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* Colores para el estado de conexión */
+.status.connected {
+    color: #2ECC71; /* Verde esmeralda */
+    font-weight: 700;
+    animation: fadeInColor 0.5s forwards;
+}
+
+.status.error {
+    color: #E74C3C; /* Rojo ladrillo */
+    font-weight: 700;
+    animation: fadeInColor 0.5s forwards;
+}
+
+/* Animación para el cambio de color del estado */
+@keyframes fadeInColor {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Media Queries para Responsividad: Asegura que se vea bien en móviles */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .data-grid {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+    .data-box h2 {
+        font-size: 3em;
+    }
+}
